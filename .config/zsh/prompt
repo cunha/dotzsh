@@ -1,0 +1,78 @@
+function settitle { echo -ne "\e]0;$1\007" ; }
+
+function set-prompt {
+	if [[ $KEYMAP = vicmd ]] ; then
+		PS1KML="{" ;
+		PS1KMR="}" ;
+	else
+		PS1KML="[" ;
+		PS1KMR="]" ;
+	fi ;
+	PROMPT=""
+	if [[ ! -z $vcs_info_msg_0_ ]] ; then
+		PROMPT+="[$vcs_info_msg_0_]"
+	fi
+	PROMPT+="%1(j.%F{foreground}[%F{green}%j%F{foreground}].)"
+	PROMPT+="%F{foreground}$PS1KML"
+	if [[ $TMUX != "" ]] ; then
+		WINDOW=$(tmux display-message -p "#I")
+	fi ;
+	if [[ $WINDOW != "" ]] ; then
+		PROMPT+="%{$terminfo[sgr0]%}$WINDOW%F{foreground}!"
+	fi ;
+	PROMPT+="%F{red}%m%F{foreground}:%F{blue}%~"
+	PROMPT+="%F{foreground}$PS1KMR"
+	PROMPT+="$PROMPT_TERM_COLOR%# %{$terminfo[sgr0]%}"
+}
+
+function precmd {
+	if [[ $? -ne 0 ]] ; then
+		PROMPT_TERM_COLOR=%F{red}
+	else
+		PROMPT_TERM_COLOR=%F{yellow}
+	fi
+	set-prompt
+	if [[ -z "$WINDOW" ]] ; then
+		settitle $(hostname -s):$(pwd)
+	else
+		echo -ne "\033k$(basename "$(pwd)")\033\\"
+	fi
+}
+
+function preexec {
+	cmd=${2[(w)1]}
+	cmd=${cmd#./}
+	if [[ $cmd = ssh ]] ; then cmd="s ${2[(w)2]}" ; fi
+	if [[ $cmd = vim ]] ; then cmd="v $(basename ${2[(w)2]})" ; fi
+	if [[ -z "$WINDOW" ]] ; then
+		settitle "$(hostname -s):$(pwd) -- $cmd"
+	else
+		echo -ne "\033k$cmd\033\\"
+	fi
+}
+
+function zle-line-init zle-keymap-select {
+	set-prompt ;
+	zle reset-prompt ;
+}
+
+autoload edit-command-line ;
+autoload colors zsh/terminfo ;
+colors ;
+
+zle -N zle-line-init ;
+zle -N zle-keymap-select ;
+zle -N edit-command-line ;
+
+# autoload -Uz vcs_info ;
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:*:prompt:*' check-for-changes true
+# zstyle ':vcs_info:git:prompt:*' stagedstr '*'
+# zstyle ':vcs_info:git:prompt:*' unstagedstr '*'
+# zstyle ':vcs_info:git:prompt:*' formats "%b"
+# zstyle ':vcs_info:git:prompt:*' actionformats "%b|%a"
+
+PS1KML="[" ;
+PS1KMR="]" ;
+set-prompt ;
+

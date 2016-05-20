@@ -1,0 +1,4 @@
+typeset -U path
+path=( $HOME/bin $HOME/.local/bin /sbin /usr/sbin $path )
+
+
