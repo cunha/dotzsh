@@ -1,4 +1,4 @@
-_FASD_VIMINFO=$HOME/.viminfo
+_FASD_VIMINFO=$HOME/.cache/viminfo
 fasd_cache=$HOME/.cache/fasd-cache-zsh
 if [ $(command -v fasd) -nt $fasd_cache -o ! -s $fasd_cache ] ; then
 	fasd --init posix-alias zsh-ccomp zsh-ccomp-install \
