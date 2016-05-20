@@ -1,4 +1,4 @@
-HISTFILE="$HOME/.zhistory"
+HISTFILE="$HOME/.cache/zhistory"
 HISTSIZE=10000
 SAVEHIST=10000
 
