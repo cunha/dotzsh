@@ -1,5 +1,5 @@
 autoload -Uz compinit ;
-compinit ;
+compinit -d $HOME/.cache/zcompdump ;
 
 zstyle ':completion::*:gnuplot:*' file-patterns '*.plot' '*' ;
 zstyle ':completion:*' menu select
