@@ -5,7 +5,5 @@ alias ls='ls --color=auto' ;
 alias dir='ls -hl' ;
 alias dirs='dirs -v' ;
 alias clear='' ;
-alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME' ;
-alias xdotfiles='git --git-dir=$HOME/.xdotfiles --work-tree=$HOME' ;
 alias xboard='xboard -size medium -ics -icshost 69.36.243.188 -icsport 5000 -telnet -telnetProgram timeseal'
 
