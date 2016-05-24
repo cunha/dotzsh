@@ -1,4 +1,4 @@
-test -s $HOME/.dircolors && eval $(dircolors -b $HOME/.dircolors) ;
+test -s $HOME/.config/dircolors && eval $(dircolors -b $HOME/.dircolors) ;
 
 if [[ $(which vim) == "vim not found" ]] ; then export EDITOR=vi ;
 else export EDITOR=vim ; fi
