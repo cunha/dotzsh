@@ -1,0 +1,27 @@
+function precmd {
+	if [[ $? -ne 0 ]] ; then
+		PROMPT_TERM_COLOR=%F{red}
+	else
+		PROMPT_TERM_COLOR=%F{yellow}
+	fi
+	set-prompt
+	if [[ -z "$WINDOW" ]] ; then
+		settitle $(hostname -s):$(pwd)
+	else
+		echo -ne "\033k$(basename "$(pwd)")\033\\"
+	fi
+}
+
+function preexec {
+	update_ssh_auth_sock
+	cmd=${2[(w)1]}
+	cmd=${cmd#./}
+	if [[ $cmd = ssh ]] ; then cmd="s ${2[(w)2]}" ; fi
+	if [[ $cmd = vim ]] ; then cmd="v $(basename ${2[(w)2]})" ; fi
+	if [[ -z "$WINDOW" ]] ; then
+		settitle "$(hostname -s):$(pwd) -- $cmd"
+	else
+		echo -ne "\033k$cmd\033\\"
+	fi
+}
+
