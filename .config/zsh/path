@@ -1,4 +1,5 @@
 typeset -U path
-path=( $HOME/bin $HOME/.local/bin /sbin /usr/sbin $path )
+GEMS=/home/cunha/.gem/ruby/2.3.0/bin
+path=( $HOME/bin $HOME/.local/bin /sbin /usr/sbin $path $GEMS )
 
 

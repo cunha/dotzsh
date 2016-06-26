@@ -1,5 +1,6 @@
 source $HOME/.config/zsh/bindings
-source $HOME/.config/zsh/completion
+source $HOME/.config/zsh/completion/personal
+source $HOME/.config/zsh/completion/tmuxinator.zsh
 source $HOME/.config/zsh/prompt
 source $HOME/.config/zsh/preexeccmd
 source $HOME/.config/zsh/history
