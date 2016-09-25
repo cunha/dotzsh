@@ -21,17 +21,13 @@ function zsh-ssh-agent {
 	fi
 }
 
-# This functionality no longer needed, we now chain the SSH agent.
+function update_ssh_auth_sock {
+	[[ -e $SSH_AUTH_SOCK ]] && return
+	eval $(tmux show-environment -s SSH_AUTH_SOCK)
+	echo "$fg[red]SSH_AUTH_SOCK updated.$terminfo[sgr0]"
+}
+
+# This functionality no longer needed, we now chain the SSH agent:
 # export ZSH_SSH_AGENT_ENV="$HOME/.ssh/ssh-agent-$(hostname)" ;
 # zsh-ssh-agent ;
-
-function update_ssh_auth_sock {}
-
-if [[ -n $TMUX ]] ; then
-	function update_ssh_auth_sock {
-		[[ -e $SSH_AUTH_SOCK ]] && return
-		eval $(tmux show-environment -s SSH_AUTH_SOCK)
-		echo "$fg[red]SSH_AUTH_SOCK updated.$terminfo[sgr0]"
-	}
-fi
 
