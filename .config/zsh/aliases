@@ -1,7 +1,7 @@
 # unhash -am "*" ;
 alias date='date +%Y%m%d.%H%M' ;
 alias date='date +%Y%m%d.%H%M%S' ;
-alias ls='ls --color=auto' ;
+alias ls='ls --color=auto --group-directories-first' ;
 alias dir='ls -hl' ;
 alias dirs='dirs -v' ;
 alias clear='' ;
@@ -11,6 +11,7 @@ alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
 alias birdamsix="ssh amsterdam01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
 alias birdsix="ssh seattle01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
 alias birdisi="ssh isi01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
+alias birdcornell="ssh cornell01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
 
 alias wgetsite='wget -r -e robots=off --no-parent --reject "index.html*"'
 alias pdfimgresz='convert -density 200x200 -quality 60 -compress jpeg'

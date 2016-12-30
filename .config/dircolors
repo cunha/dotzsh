@@ -210,6 +210,8 @@ EXEC 32  # Unix
 
 # Source text
 .h 35
+.hh 35
+.hpp 35
 .c 35
 .C 35
 .cc 35
