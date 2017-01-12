@@ -8,3 +8,4 @@ export VISUAL=$EDITOR ;
 
 REPORTTIME=10 ;
 
+source $HOME/.config/zsh/zsh-syntax-highlightning.git/zsh-syntax-highlighting.zsh
