@@ -1,0 +1,12 @@
+if [[ -f ${ADOT:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
+	_ANTIGEN_CACHE_ENABLED=true
+	source ${ADOT:-$HOME/.antigen}/.cache/.zcache-payload
+	setupsolarized
+elif [[ -s /usr/share/zsh-antigen/antigen.zsh ]] ; then
+	_ANTIGEN_CACHE_ENABLED=true
+	source /usr/share/zsh-antigen/antigen.zsh
+	antigen bundle joel-porquet/zsh-dircolors-solarized.git
+	antigen apply
+	setupsolarized
+fi
+
