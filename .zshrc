@@ -1,3 +1,4 @@
+source $HOME/.config/zsh/antigen
 source $HOME/.config/zsh/bindings
 for fn in $(ls $HOME/.config/zsh/completion.d/) ; do
 	source $HOME/.config/zsh/completion.d/$fn
