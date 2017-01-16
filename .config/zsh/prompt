@@ -1,5 +1,10 @@
 function settitle { echo -ne "\e]0;$1\007" ; }
 
+autoload -Uz vcs_info
+zstyle 'vcs_info:*' enable git cvs svn hg
+zstyle ':vcs_info:*' actionformats '%F{magenta}%b:%a%F{foreground}'
+zstyle ':vcs_info:*' formats '%F{magenta}%b%F{foreground}'
+
 function set-prompt {
 	if [[ $KEYMAP = vicmd ]] ; then
 		PS1KML="{" ;
@@ -8,21 +13,22 @@ function set-prompt {
 		PS1KML="[" ;
 		PS1KMR="]" ;
 	fi ;
-	PROMPT=""
-	if [[ ! -z $vcs_info_msg_0_ ]] ; then
-		PROMPT+="[$vcs_info_msg_0_]"
-	fi
-	PROMPT+="%1(j.%F{foreground}[%F{green}%j%F{foreground}].)"
-	PROMPT+="%F{foreground}$PS1KML"
+	PROMPT="%F{foreground}$PS1KML"
+	PROMPT+="%1(j.%F{yellow}%j%F{foreground} .)"
+
 	if [[ $TMUX != "" ]] ; then
 		WINDOW=$(tmux display-message -p "#I")
 	fi ;
 	if [[ $WINDOW != "" ]] ; then
-		PROMPT+="%{$terminfo[sgr0]%}$WINDOW%F{foreground}!"
+		PROMPT+="%F{foreground}$WINDOW%F{foreground}:"
 	fi ;
-	PROMPT+="%F{red}%m%F{foreground}:%F{blue}%~"
-	PROMPT+="%F{foreground}$PS1KMR"
-	PROMPT+="$PROMPT_TERM_COLOR%# %{$terminfo[sgr0]%}"
+	PROMPT+="%F{red}%m%F{foreground}:%F{blue}%~%F{foreground}"
+	if [[ ! -z $vcs_info_msg_0_ ]] ; then
+		PROMPT+=" ${vcs_info_msg_0_}"
+	fi
+	PROMPT+="$PS1KMR"
+	PROMPT+="$PROMPT_TERM_COLOR%# %F{foreground}"
+
 }
 
 function zle-line-init zle-keymap-select {

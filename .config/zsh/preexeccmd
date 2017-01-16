@@ -1,9 +1,10 @@
 function precmd {
 	if [[ $? -ne 0 ]] ; then
-		PROMPT_TERM_COLOR=%F{red}
+		PROMPT_TERM_COLOR="%F{red}"
 	else
-		PROMPT_TERM_COLOR=%F{yellow}
+		PROMPT_TERM_COLOR="%F{green}"
 	fi
+	vcs_info
 	set-prompt
 	if [[ -z "$WINDOW" ]] ; then
 		settitle $(hostname -s):$(pwd)
