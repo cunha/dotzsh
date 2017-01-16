@@ -1,6 +1,6 @@
 # unhash -am "*" ;
-alias date='date +%Y%m%d.%H%M' ;
-alias date='date +%Y%m%d.%H%M%S' ;
+# alias date='date +%Y%m%d.%H%M' ;
+alias mdate='date +%Y%m%d.%H%M%S' ;
 alias ls='ls --color=auto --group-directories-first' ;
 alias dir='ls -hl' ;
 alias dirs='dirs -v' ;
