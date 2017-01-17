@@ -163,16 +163,16 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 34
+DIR 38;5;4
 # symbolic link
-LINK 01;36
+LINK 38;5;6;48;5;7
 
 # pipe, socket, block device, character device (blue bg)
-FIFO 32;46
-SOCK 35;46
-DOOR 35;46 # Solaris 2.5 and later
-BLK  33;46
-CHR  32;46
+FIFO 38;5;3;48;5;7
+SOCK 38;5;5;48;5;7
+DOOR 38;5;3;48;5;7  # Solaris 2.5 and later
+BLK  38;5;3;48;5;7
+CHR  38;5;3;48;5;7
 
 
 #############################################################################
@@ -185,13 +185,13 @@ ORPHAN  05;37;41
 MISSING 05;37;41
 
 # files with execute permission
-EXEC 32  # Unix
-.cmd 32  # Win
-.exe 32  # Win
-.com 32  # Win
-.bat 32  # Win
-.reg 32  # Win
-.app 32  # OSX
+EXEC 38;5;2  # Unix
+.cmd 38;5;2  # Win
+.exe 38;5;2 # Win
+.com 38;5;2 # Win
+.bat 38;5;2 # Win
+.reg 38;5;2 # Win
+.app 38;5;2 # OSX
 
 #############################################################################
 ### By extension
@@ -203,200 +203,199 @@ EXEC 32  # Unix
 ### Text formats
 
 # Text that we can edit with a regular editor
-.txt 36
-.org 36
-.md 36
-.mkd 36
+.txt 38;5;10
+.org 36;5;10
+.md 38;5;10
+.mkd 38;5;10
 
 # Source text
-.h 35
-.hh 35
-.hpp 35
-.c 35
-.C 35
-.cc 35
-.cpp 35
-.cxx 35
-.objc 35
-.cl 35
-.sh 35
-.bash 35
-.csh 35
-.zsh 35
-.el 35
-.vim 35
-.java 35
-.pl 35
-.pm 35
-.py 35
-.rb 35
-.hs 35
-.php 35
-.htm 35
-.html 35
-.shtml 35
-.erb 35
-.haml 35
-.xml 35
-.rdf 35
-.css 35
-.sass 35
-.scss 35
-.less 35
-.js 35
-.coffee 35
-.man 35
-.0 35
-.1 35
-.2 35
-.3 35
-.4 35
-.5 35
-.6 35
-.7 35
-.8 35
-.9 35
-.l 35
-.n 35
-.p 35
-.pod 35
-.tex 35
-.go 35
-.sql 35
-.csv 35
-
+.h 38;5;5
+.hh 38;5;5
+.hpp 38;5;5
+.c 38;5;5
+.C 38;5;5
+.cc 38;5;5
+.cpp 38;5;5
+.cxx 38;5;5
+.objc 38;5;5
+.cl 38;5;5
+.sh 38;5;5
+.bash 38;5;5
+.csh 38;5;5
+.zsh 38;5;5
+.el 38;5;5
+.vim 38;5;5
+.java 38;5;5
+.pl 38;5;5
+.pm 38;5;5
+.py 38;5;5
+.rb 38;5;5
+.hs 38;5;5
+.php 38;5;5
+.htm 38;5;5
+.html 38;5;5
+.shtml 38;5;5
+.erb 38;5;5
+.haml 38;5;5
+.xml 38;5;5
+.rdf 38;5;5
+.css 38;5;5
+.sass 38;5;5
+.scss 38;5;5
+.less 38;5;5
+.js 38;5;5
+.coffee 38;5;5
+.man 38;5;5
+.0 38;5;5
+.1 38;5;5
+.2 38;5;5
+.3 38;5;5
+.4 38;5;5
+.5 38;5;5
+.6 38;5;5
+.7 38;5;5
+.8 38;5;5
+.9 38;5;5
+.l 38;5;5
+.n 38;5;5
+.p 38;5;5
+.pod 38;5;5
+.tex 38;5;5
+.go 38;5;5
+.sql 38;5;5
+.csv 38;5;5
 
 ### Multimedia formats
 
 # Image
-.bmp 01;31
-.cgm 01;31
-.dl 01;31
-.dvi 01;31
-.emf 01;31
-.eps 01;31
-.gif 01;31
-.jpeg 01;31
-.jpg 01;31
-.JPG 01;31
-.mng 01;31
-.pbm 01;31
-.pcx 01;31
-.pgm 01;31
-.png 01;31
-.PNG 01;31
-.ppm 01;31
-.pps 01;31
-.ppsx 01;31
-.ps 01;31
-.svg 01;31
-.svgz 01;31
-.tga 01;31
-.tif 01;31
-.tiff 01;31
-.xbm 01;31
-.xcf 01;31
-.xpm 01;31
-.xwd 01;31
-.xwd 01;31
-.yuv 01;31
+.bmp 38;5;9;48;5;7
+.cgm 38;5;9;48;5;7
+.dl 38;5;9;48;5;7
+.dvi 38;5;9;48;5;7
+.emf 38;5;9;48;5;7
+.eps 38;5;9;48;5;7
+.gif 38;5;9;48;5;7
+.jpeg 38;5;9;48;5;7
+.jpg 38;5;9;48;5;7
+.JPG 38;5;9;48;5;7
+.mng 38;5;9;48;5;7
+.pbm 38;5;9;48;5;7
+.pcx 38;5;9;48;5;7
+.pgm 38;5;9;48;5;7
+.png 38;5;9;48;5;7
+.PNG 38;5;9;48;5;7
+.ppm 38;5;9;48;5;7
+.pps 38;5;9;48;5;7
+.ppsx 38;5;9;48;5;7
+.ps 38;5;9;48;5;7
+.svg 38;5;9;48;5;7
+.svgz 38;5;9;48;5;7
+.tga 38;5;9;48;5;7
+.tif 38;5;9;48;5;7
+.tiff 38;5;9;48;5;7
+.xbm 38;5;9;48;5;7
+.xcf 38;5;9;48;5;7
+.xpm 38;5;9;48;5;7
+.xwd 38;5;9;48;5;7
+.xwd 38;5;9;48;5;7
+.yuv 38;5;9;48;5;7
 
 # Audio
-.aac 01;31
-.au  01;31
-.flac 01;31
-.m4a 01;31
-.mid 01;31
-.midi 01;31
-.mka 01;31
-.mp3 01;31
-.mpa 01;31
-.mpeg 01;31
-.mpg 01;31
-.ogg  01;31
-.ra 01;31
-.wav 01;31
+.aac 38;5;9;48;5;7
+.au  38;5;9;48;5;7
+.flac 38;5;9;48;5;7
+.m4a 38;5;9;48;5;7
+.mid 38;5;9;48;5;7
+.midi 38;5;9;48;5;7
+.mka 38;5;9;48;5;7
+.mp3 38;5;9;48;5;7
+.mpa 38;5;9;48;5;7
+.mpeg 38;5;9;48;5;7
+.mpg 38;5;9;48;5;7
+.ogg  38;5;9;48;5;7
+.ra 38;5;9;48;5;7
+.wav 38;5;9;48;5;7
 
 # Video
-.anx 01;31
-.asf 01;31
-.avi 01;31
-.axv 01;31
-.flc 01;31
-.fli 01;31
-.flv 01;31
-.gl 01;31
-.m2v 01;31
-.m4v 01;31
-.mkv 01;31
-.mov 01;31
-.MOV 01;31
-.mp4 01;31
-.mp4v 01;31
-.mpeg 01;31
-.mpg 01;31
-.nuv 01;31
-.ogm 01;31
-.ogv 01;31
-.ogx 01;31
-.qt 01;31
-.rm 01;31
-.rmvb 01;31
-.swf 01;31
-.vob 01;31
-.webm 01;31
-.wmv 01;31
+.anx 38;5;9;48;5;7
+.asf 38;5;9;48;5;7
+.avi 38;5;9;48;5;7
+.axv 38;5;9;48;5;7
+.flc 38;5;9;48;5;7
+.fli 38;5;9;48;5;7
+.flv 38;5;9;48;5;7
+.gl 38;5;9;48;5;7
+.m2v 38;5;9;48;5;7
+.m4v 38;5;9;48;5;7
+.mkv 38;5;9;48;5;7
+.mov 38;5;9;48;5;7
+.MOV 38;5;9;48;5;7
+.mp4 38;5;9;48;5;7
+.mp4v 38;5;9;48;5;7
+.mpeg 38;5;9;48;5;7
+.mpg 38;5;9;48;5;7
+.nuv 38;5;9;48;5;7
+.ogm 38;5;9;48;5;7
+.ogv 38;5;9;48;5;7
+.ogx 38;5;9;48;5;7
+.qt 38;5;9;48;5;7
+.rm 38;5;9;48;5;7
+.rmvb 38;5;9;48;5;7
+.swf 38;5;9;48;5;7
+.vob 38;5;9;48;5;7
+.webm 38;5;9;48;5;7
+.wmv 38;5;9;48;5;7
 
 ### Misc
 
 # Binary document formats and multimedia source
-.doc 33
-.docx 33
-.rtf 33
-.odt 33
-.dot 33
-.dotx 33
-.ott 33
-.xls 33
-.xlsx 33
-.ods 33
-.ots 33
-.ppt 33
-.pptx 33
-.odp 33
-.otp 33
-.fla 33
-.pdf 33
-.psd 33
+.doc 38;5;3
+.docx 38;5;3
+.rtf 38;5;3
+.odt 38;5;3
+.dot 38;5;3
+.dotx 38;5;3
+.ott 38;5;3
+.xls 38;5;3
+.xlsx 38;5;3
+.ods 38;5;3
+.ots 38;5;3
+.ppt 38;5;3
+.pptx 38;5;3
+.odp 38;5;3
+.otp 38;5;3
+.fla 38;5;3
+.pdf 38;5;3
+.psd 38;5;3
 
 # Archives, compressed
-.7z   31
-.apk  31
-.arj  31
-.bin  31
-.bz   31
-.bz2  31
-.cab  31  # Win
-.deb  31
-.dmg  31  # OSX
-.gem  31
-.gz   31
-.iso  31
-.jar  31
-.msi  31  # Win
-.rar  31
-.rpm  31
-.tar  31
-.tbz  31
-.tbz2 31
-.tgz  31
-.tx   31
-.war  31
-.xpi  31
-.xz   31
-.z    31
-.Z    31
-.zip  31
+.7z   38;5;1
+.apk  38;5;1
+.arj  38;5;1
+.bin  38;5;1
+.bz   38;5;1
+.bz2  38;5;1
+.cab  38;5;1
+.deb  38;5;1
+.dmg  38;5;1
+.gem  38;5;1
+.gz   38;5;1
+.iso  38;5;1
+.jar  38;5;1
+.msi  38;5;1
+.rar  38;5;1
+.rpm  38;5;1
+.tar  38;5;1
+.tbz  38;5;1
+.tbz2 38;5;1
+.tgz  38;5;1
+.tx   38;5;1
+.war  38;5;1
+.xpi  38;5;1
+.xz   38;5;1
+.z    38;5;1
+.Z    38;5;1
+.zip  38;5;1
 
 # For testing
 .ANSI-30-black 30
@@ -425,27 +424,27 @@ EXEC 32  # Unix
 #.log 01;32
 #*~ 01;32
 #*# 01;32
-.log 01;34
-*~ 01;34
-*# 01;34
+.log 38;5;12
+*~ 38;5;12
+*# 38;5;12
 
 # Unimportant non-text files
 # For universal scheme, use brightcyan 01;36
 # For optimal on dark bg (but too prominent on light bg), change to 01;33
-.bak 01;36
-.BAK 01;36
-.old 01;36
-.OLD 01;36
-.org_archive 01;36
-.off 01;36
-.OFF 01;36
-.dist 01;36
-.DIST 01;36
-.orig 01;36
-.ORIG 01;36
-.swp 01;36
-.swo 01;36
-*,v 01;36
+.bak 38;5;12
+.BAK 38;5;12
+.old 38;5;12
+.OLD 38;5;12
+.org_archive 38;5;12
+.off 38;5;12
+.OFF 38;5;12
+.dist 38;5;12
+.DIST 38;5;12
+.orig 38;5;12
+.ORIG 38;5;12
+.swp 38;5;12
+.swo 38;5;12
+*,v 38;5;12
 #.bak 01;33
 #.BAK 01;33
 #.old 01;33

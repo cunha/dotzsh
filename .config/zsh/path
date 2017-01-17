@@ -2,4 +2,14 @@ typeset -U path
 GEMS=/home/cunha/.gem/ruby/2.3.0/bin
 path=( $HOME/bin $HOME/.local/bin /sbin /usr/sbin $path $GEMS )
 
+typeset -TU PYTHONPATH pythonpath
+export PYTHONPATH
+pythonpath=( $HOME/libs/python/ $pythonpath )
+
+typeset -TU LD_LIBRARY_PATH libpath
+export LD_LIBRARY_PATH
+libpath=( $HOME/work/libs/lib/ $libpath )
+
+
+
 

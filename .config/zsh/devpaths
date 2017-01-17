@@ -1,9 +1,0 @@
-typeset -TU PYTHONPATH pythonpath
-export PYTHONPATH
-pythonpath=( $HOME/libs/python/ $pythonpath )
-
-typeset -TU LD_LIBRARY_PATH libpath
-export LD_LIBRARY_PATH
-libpath=( $HOME/work/libs/lib/ $libpath )
-
-
