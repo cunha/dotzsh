@@ -23,7 +23,7 @@ function zsh-ssh-agent {
 
 function update_ssh_auth_sock {
 	[[ -e $SSH_AUTH_SOCK ]] && return
-	eval $(tmux show-environment -s SSH_AUTH_SOCK)
+	eval $(tmux show-environment SSH_AUTH_SOCK)
 	echo "$fg[red]SSH_AUTH_SOCK updated.$terminfo[sgr0]"
 }
 

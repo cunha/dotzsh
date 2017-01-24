@@ -9,10 +9,18 @@ alias xboard='xboard -size medium -ics -icshost 69.36.243.188 -icsport 5000 -tel
 alias fzf='fzf-tmux'
 
 alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
-alias birdamsix="ssh amsterdam01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
-alias birdsix="ssh seattle01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
-alias birdisi="ssh isi01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
-alias birdcornell="ssh cornell01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
+
+alias bird-amsix="ssh amsterdam01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
+alias bird-six="ssh seattle01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
+
+ssh-bird () {
+	ssh -tt $1 'sudo docker exec -ti peeringmux_bird_1 bash'
+}
+
+bird-cli () {
+	ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'
+}
+
 
 alias wgetsite='wget -r -e robots=off --no-parent --reject "index.html*"'
 alias pdfimgresz='convert -density 200x200 -quality 60 -compress jpeg'
