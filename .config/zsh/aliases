@@ -10,9 +10,6 @@ alias fzf='fzf-tmux'
 
 alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
 
-alias bird-amsix="ssh amsterdam01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
-alias bird-six="ssh seattle01.mux.peering.usc.edu -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'"
-
 ssh-bird () {
 	ssh -tt $1 'sudo docker exec -ti peeringmux_bird_1 bash'
 }

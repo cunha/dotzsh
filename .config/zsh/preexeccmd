@@ -18,7 +18,7 @@ function preexec {
 	cmd=${2[(w)1]}
 	cmd=${cmd#./}
 	if [[ $cmd = ssh ]] ; then cmd="s ${2[(w)2]}" ; fi
-	if [[ $cmd = vim ]] ; then cmd="v $(basename ${2[(w)2]})" ; fi
+	if [[ $cmd = vim ]] ; then cmd="v $(basename -- ${2[(w)$#2]})" ; fi
 	if [[ -z "$WINDOW" ]] ; then
 		settitle "$(hostname -s):$(pwd) -- $cmd"
 	else
