@@ -9,21 +9,22 @@ alias xboard='xboard -size medium -ics -icshost 69.36.243.188 -icsport 5000 -tel
 alias fzf='fzf-tmux'
 
 alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
-
-ssh-bird () {
-	ssh -tt $1 'sudo docker exec -ti peeringmux_bird_1 bash'
-}
-
-bird-cli () {
-	ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'
-}
-
-bird6-cli () {
-	ssh $1 -tt 'sudo docker exec -ti peeringmux_bird6_1 birdc6 -s /var/run/peering/bird6/bird6.ctl'
-}
-
-
-
-
 alias wgetsite='wget -r -e robots=off --no-parent --reject "index.html*"'
 alias pdfimgresz='convert -density 200x200 -quality 60 -compress jpeg'
+
+ssh-bird () {
+	if [[ $1 == "--cli" ]] ; then
+		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'
+	else
+		ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 bash'
+	fi
+}
+ssh-bird6 () {
+	if [[ $1 == "--cli" ]] ; then
+		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird6_1 birdc6 -s /var/run/peering/bird6/bird6.ctl'
+	else
+		ssh $1 -tt 'sudo docker exec -ti peeringmux_bird6_1 bash'
+	fi
+}
+
+alias dockps='docker ps -a --format="table {{.Names}}\t{{.Command}}\t{{.Status}}"'
