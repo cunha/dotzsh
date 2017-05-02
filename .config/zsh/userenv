@@ -3,7 +3,7 @@ if [[ -s $HOME/.config/dircolors ]] ; then
 fi
 
 if [[ $TERM == "tmux" ]] ; then
-	if ! infocmp $TERM > /dev/null ; then
+	if ! infocmp $TERM &> /dev/null ; then
 		export TERM=screen-256color
 	fi
 fi
