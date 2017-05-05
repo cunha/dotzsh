@@ -12,14 +12,20 @@ alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
 alias wgetsite='wget -r -e robots=off --no-parent --reject "index.html*"'
 alias pdfimgresz='convert -density 200x200 -quality 60 -compress jpeg'
 
-ssh-bird () {
+alias dockps='docker ps -a --format="table {{.Names}}\t{{.Command}}\t{{.Status}}"'
+
+peering-dump-configs () {
+	ssh peering.usc.edu -tt "cd /opt/peering/web ; sudo ./django-manage.sh dump-configs"
+	scp -r peering.usc.edu:/opt/peering/web/local/dump-configs .
+}
+peering-ssh-bird () {
 	if [[ $1 == "--cli" ]] ; then
 		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'
 	else
 		ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 bash'
 	fi
 }
-ssh-bird6 () {
+peering-ssh-bird6 () {
 	if [[ $1 == "--cli" ]] ; then
 		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird6_1 birdc6 -s /var/run/peering/bird6/bird6.ctl'
 	else
@@ -27,4 +33,3 @@ ssh-bird6 () {
 	fi
 }
 
-alias dockps='docker ps -a --format="table {{.Names}}\t{{.Command}}\t{{.Status}}"'
