@@ -2,6 +2,12 @@ if [[ -s $HOME/.config/dircolors ]] ; then
 	eval $(dircolors -b $HOME/.config/dircolors) ;
 fi
 
+if [[ $TERM == "tmux" ]] ; then
+	if ! infocmp $TERM &> /dev/null ; then
+		export TERM=screen-256color
+	fi
+fi
+
 if [[ $(which vim) == "vim not found" ]] ; then export EDITOR=vi ;
 else export EDITOR=vim ; fi
 export VISUAL=$EDITOR ;
