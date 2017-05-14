@@ -8,6 +8,9 @@ alias clear='' ;
 alias xboard='xboard -size medium -ics -icshost 69.36.243.188 -icsport 5000 -telnet -telnetProgram timeseal'
 alias fzf='fzf-tmux'
 
+# check if the machine has a DRAC or IPMI
+alias ipmiinfo="sudo ipmitool sdr elist mcloc"
+
 alias awkcsv="awk -vFPAT='[^,]*|\"[^\"]*\"'"
 alias wgetsite='wget -r -e robots=off --no-parent --reject "index.html*"'
 alias pdfimgresz='convert -density 200x200 -quality 60 -compress jpeg'
