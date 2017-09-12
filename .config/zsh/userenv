@@ -4,12 +4,15 @@ fi
 
 if [[ $TERM == "tmux" ]] ; then
 	if ! infocmp $TERM &> /dev/null ; then
-		export TERM=screen-256color
+		tic $HOME/.config/tmux/screen-256color-italic.terminfo
+		export TERM=screen-256color-italic
 	fi
 fi
 
 if [[ $(which vim) == "vim not found" ]] ; then export EDITOR=vi ;
 else export EDITOR=vim ; fi
 export VISUAL=$EDITOR ;
+
+if [[ $(which xclip) == "xclip not found" ]] ; then echo "xclip not found" ; fi
 
 REPORTTIME=10 ;
