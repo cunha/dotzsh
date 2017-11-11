@@ -1,3 +1,5 @@
+fpath=( $fpath $HOME/.config/zsh/compdef )
+
 autoload -Uz compinit ;
 compinit -d $HOME/.cache/zcompdump ;
 
