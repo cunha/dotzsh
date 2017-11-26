@@ -1,6 +1,6 @@
 typeset -U path
 GEMS=/home/cunha/.gem/ruby/2.3.0/bin
-path=( $HOME/bin $HOME/.local/bin /sbin /usr/sbin $path $GEMS )
+path=( $HOME/bin $HOME/.local/bin $HOME/.cargo/bin /sbin /usr/sbin $path $GEMS )
 
 typeset -TU PYTHONPATH pythonpath
 export PYTHONPATH
@@ -10,6 +10,5 @@ typeset -TU LD_LIBRARY_PATH libpath
 export LD_LIBRARY_PATH
 libpath=( $HOME/work/libs/lib/ $libpath )
 
-
-
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
