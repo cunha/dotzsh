@@ -10,5 +10,7 @@ typeset -TU LD_LIBRARY_PATH libpath
 export LD_LIBRARY_PATH
 libpath=( $HOME/work/libs/lib/ $libpath )
 
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+if which rustc > /dev/null ; then
+	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi
 
