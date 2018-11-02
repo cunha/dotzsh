@@ -1,24 +1,37 @@
 # We do not use any bindings starting with meta (ESC).
 # Unbind them so we do not have to wait for zsh ESC-chaining.
-KEYTIMEOUT=1
+# KEYTIMEOUT=1
+
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+# tmux
+bindkey -M emacs '^[[1;5D' backward-word
+bindkey -M emacs '^[[1;5C' forward-word
+# uxterm
+bindkey -M emacs '^[Oc' forward-word
+bindkey -M emacs '^[Od' backward-word
 
-bindkey -M viins '^R' history-incremental-search-backward
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^W' backward-kill-word
-bindkey -M viins '^P' insert-last-word
-bindkey -M viins '^O' copy-prev-shell-word
-bindkey -M viins '^K' push-line
-bindkey -M vicmd '^K' push-line
-bindkey -M vicmd v edit-command-line
+# bindkey -M emacs '^?' backward-delete-char
+bindkey -M emacs '^H' backward-delete-word
+bindkey -M emacs '^[[3;5~' kill-word
 
-bindkey -M isearch '^N' history-incremental-search-forward
-bindkey -M isearch '^R' history-incremental-search-backward
-bindkey -M isearch '\e' accept-search
+# temporary
+bindkey -M emacs '^w' beep
 
-autoload run-help
-bindkey -M viins '^N' run-help
-bindkey -M vicmd '^N' run-help
+# bindkey -M viins '^R' history-incremental-search-backward
+# bindkey -M viins '^H' backward-delete-char
+# bindkey -M viins '^W' backward-kill-word
+# bindkey -M viins '^P' insert-last-word
+# bindkey -M viins '^O' copy-prev-shell-word
+# bindkey -M viins '^K' push-line
+# bindkey -M vicmd '^K' push-line
+# bindkey -M vicmd v edit-command-line
+#
+# bindkey -M isearch '^N' history-incremental-search-forward
+# bindkey -M isearch '^R' history-incremental-search-backward
+# bindkey -M isearch '\e' accept-search
+#
+# autoload run-help
+# bindkey -M viins '^N' run-help
+# bindkey -M vicmd '^N' run-help
 
-bindkey -v ;
+bindkey -e ;

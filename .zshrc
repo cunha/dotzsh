@@ -10,5 +10,3 @@ source $HOME/.config/zsh/fasd
 source $HOME/.config/zsh/completion
 source $HOME/.fzf.zsh
 source $HOME/.config/zsh/userenv
-
-mintty-sol dark

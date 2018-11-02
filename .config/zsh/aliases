@@ -26,6 +26,9 @@ peering-dump-configs () {
 peering-ssh-bird () {
 	if [[ $1 == "--cli" ]] ; then
 		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl'
+    elif [[ $1 == "--scp" ]] ; then
+        scp "$2" "$3:"
+        ssh $3 -tt 'sudo docker cp '$2' peeringmux_bird_1:/root/'$2
 	else
 		ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 bash'
 	fi
@@ -34,6 +37,9 @@ peering-ssh-bird () {
 peering-ssh-bird6 () {
 	if [[ $1 == "--cli" ]] ; then
 		ssh $2 -tt 'sudo docker exec -ti peeringmux_bird6_1 birdc6 -s /var/run/peering/bird6/bird6.ctl'
+    elif [[ $1 == "--scp" ]] ; then
+        scp "$2" "$3:"
+        ssh $3 -tt 'sudo docker cp '$2' peeringmux_bird6_1:/root/'$2
 	else
 		ssh $1 -tt 'sudo docker exec -ti peeringmux_bird6_1 bash'
 	fi
