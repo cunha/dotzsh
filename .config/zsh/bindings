@@ -3,16 +3,17 @@
 # KEYTIMEOUT=1
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-# tmux
-bindkey -M emacs '^[[1;5D' backward-word
-bindkey -M emacs '^[[1;5C' forward-word
-# uxterm
-bindkey -M emacs '^[Oc' forward-word
-bindkey -M emacs '^[Od' backward-word
 
-# bindkey -M emacs '^?' backward-delete-char
 bindkey -M emacs '^H' backward-delete-word
-bindkey -M emacs '^[[3;5~' kill-word
+if [[ "$TERM" == "rxvt-unicode" ]] ; then
+    bindkey -M emacs '^[Oc' forward-word
+    bindkey -M emacs '^[Od' backward-word
+    bindkey -M emacs '^[[3^' kill-word
+else
+    bindkey -M emacs '^[[1;5D' backward-word
+    bindkey -M emacs '^[[1;5C' forward-word
+    bindkey -M emacs '^[[3;5~' kill-word
+fi
 
 # temporary
 bindkey -M emacs '^w' beep

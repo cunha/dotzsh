@@ -91,3 +91,27 @@ transfer() {
     # cleanup
     rm -f $tmpfile
 }
+
+DEVM_NAME=devops
+DEVM_ZONE=southamerica-east1-b
+devm () {
+    case $1 in ;
+    --ip)
+        gcloud compute instances describe "--zone=$DEVM_ZONE" "$DEVM_NAME" \
+            | shyaml get-value networkInterfaces.0.accessConfigs.0.natIP
+        ;;
+    --stop)
+        gcloud compute instances stop "--zone=$DEVM_ZONE" "$DEVM_NAME"
+        ;;
+    --start)
+        gcloud compute instances start "--zone=$DEVM_ZONE" "$DEVM_NAME"
+        devm --config
+        ;;
+    --config)
+        local IP=$(devm --ip)
+        sed -i '/Host devops/{N; s/Host devops\n\tHostName [0-9.]\+/Host devops\n\tHostName '$IP'/}' .ssh/config
+        ;;
+    *)
+        echo "unknown devm operation: $1"
+    esac
+}
