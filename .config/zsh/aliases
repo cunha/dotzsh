@@ -94,22 +94,29 @@ transfer() {
 
 DEVM_NAME=devops
 DEVM_ZONE=us-east1-b
+GINSTANCES="gcloud --project=devops-221314 compute instances"
+
 devm () {
     case $1 in ;
     --ip)
-        gcloud compute instances describe "--zone=$DEVM_ZONE" "$DEVM_NAME" \
-            | shyaml get-value networkInterfaces.0.accessConfigs.0.natIP
+        ${=GINSTANCES} describe "--zone=$DEVM_ZONE" "$DEVM_NAME" \
+                | shyaml get-value networkInterfaces.0.accessConfigs.0.natIP
         ;;
     --stop)
-        gcloud compute instances stop "--zone=$DEVM_ZONE" "$DEVM_NAME"
+        ${=GINSTANCES} stop "--zone=$DEVM_ZONE" "$DEVM_NAME"
         ;;
     --start)
-        gcloud compute instances start "--zone=$DEVM_ZONE" "$DEVM_NAME"
-        sleep 2s
+        ${=GINSTANCES} start "--zone=$DEVM_ZONE" "$DEVM_NAME"
         devm --config
         ;;
     --config)
+        echo -n "rewriting .ssh/config..."
         local IP=$(devm --ip)
+        while [[ -z $IP ]] ; do
+            echo "."
+            sleep 2s
+            IP=$(devm --ip)
+        done
         sed -i '/Host devops/{N; s/Host devops\n\tHostName [0-9.]\+/Host devops\n\tHostName '$IP'/}' .ssh/config
         ;;
     *)
