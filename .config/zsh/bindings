@@ -17,10 +17,14 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # # temporary
 # bindkey -M emacs '^w' beep
 
+insert-last-word-forward() zle insert-last-word 1
+zle -N insert-last-word-forward
+
 bindkey -M viins '^R' history-incremental-search-backward
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^P' insert-last-word
+bindkey -M viins '^N' insert-last-word-forward
 bindkey -M viins '^O' copy-prev-shell-word
 bindkey -M viins '^K' push-line
 bindkey -M vicmd '^K' push-line
@@ -30,8 +34,8 @@ bindkey -M isearch '^N' history-incremental-search-forward
 bindkey -M isearch '^R' history-incremental-search-backward
 bindkey -M isearch '\e' accept-search
 
-autoload run-help
-bindkey -M viins '^N' run-help
-bindkey -M vicmd '^N' run-help
+# autoload run-help
+# bindkey -M viins '^N' run-help
+# bindkey -M vicmd '^N' run-help
 
 bindkey -v ;
