@@ -12,7 +12,7 @@ if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
     bindkey -M emacs '^[Oc' forward-word
     bindkey -M emacs '^[Od' backward-word
     bindkey -M emacs '^[[3^' kill-word
-else
+else if [[ "$TERM" =~ "xterm" ]]
     bindkey -M emacs '^[[1;5D' backward-word
     bindkey -M emacs '^[[1;5C' forward-word
     bindkey -M emacs '^[[3;5~' kill-word
@@ -41,3 +41,4 @@ bindkey -M isearch '\e' accept-search
 # bindkey -M vicmd '^N' run-help
 
 # bindkey -v ;
+bindkey -e ;
