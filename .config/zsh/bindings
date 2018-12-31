@@ -4,31 +4,33 @@ KEYTIMEOUT=1
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# bindkey -M emacs '^H' backward-delete-word
-# if [[ "$TERM" == "rxvt-unicode" ]] ; then
-#     bindkey -M emacs '^[Oc' forward-word
-#     bindkey -M emacs '^[Od' backward-word
-#     bindkey -M emacs '^[[3^' kill-word
-# else
-#     bindkey -M emacs '^[[1;5D' backward-word
-#     bindkey -M emacs '^[[1;5C' forward-word
-#     bindkey -M emacs '^[[3;5~' kill-word
-# fi
-# # temporary
-# bindkey -M emacs '^w' beep
-
 insert-last-word-forward() zle insert-last-word 1
 zle -N insert-last-word-forward
 
-bindkey -M viins '^R' history-incremental-search-backward
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^W' backward-kill-word
-bindkey -M viins '^P' insert-last-word
-bindkey -M viins '^N' insert-last-word-forward
-bindkey -M viins '^O' copy-prev-shell-word
-bindkey -M viins '^K' push-line
-bindkey -M vicmd '^K' push-line
-bindkey -M vicmd v edit-command-line
+bindkey -M emacs '^H' backward-delete-word
+if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
+    bindkey -M emacs '^[Oc' forward-word
+    bindkey -M emacs '^[Od' backward-word
+    bindkey -M emacs '^[[3^' kill-word
+else
+    bindkey -M emacs '^[[1;5D' backward-word
+    bindkey -M emacs '^[[1;5C' forward-word
+    bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[[H' beginning-of-line
+    bindkey -M emacs '^[[F' end-of-line
+fi
+# temporary
+bindkey -M emacs '^w' beep
+
+# bindkey -M viins '^R' history-incremental-search-backward
+# bindkey -M viins '^H' backward-delete-char
+# bindkey -M viins '^W' backward-kill-word
+# bindkey -M viins '^P' insert-last-word
+# bindkey -M viins '^N' insert-last-word-forward
+# bindkey -M viins '^O' copy-prev-shell-word
+# bindkey -M viins '^K' push-line
+# bindkey -M vicmd '^K' push-line
+# bindkey -M vicmd v edit-command-line
 
 bindkey -M isearch '^N' history-incremental-search-forward
 bindkey -M isearch '^R' history-incremental-search-backward
@@ -38,4 +40,4 @@ bindkey -M isearch '\e' accept-search
 # bindkey -M viins '^N' run-help
 # bindkey -M vicmd '^N' run-help
 
-bindkey -v ;
+# bindkey -v ;
