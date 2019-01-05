@@ -23,6 +23,7 @@ fi
 bindkey -M emacs '^w' beep
 
 # bindkey -M viins '^R' history-incremental-search-backward
+# bindkey -M viins '^?' backward-delete-char
 # bindkey -M viins '^H' backward-delete-char
 # bindkey -M viins '^W' backward-kill-word
 # bindkey -M viins '^P' insert-last-word
@@ -34,6 +35,7 @@ bindkey -M emacs '^w' beep
 
 bindkey -M isearch '^N' history-incremental-search-forward
 bindkey -M isearch '^R' history-incremental-search-backward
+bindkey -M isearch '^P' history-incremental-search-backward
 bindkey -M isearch '\e' accept-search
 
 # autoload run-help
