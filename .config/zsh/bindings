@@ -1,23 +1,80 @@
-# We do not use any bindings starting with meta (ESC).
-# Unbind them so we do not have to wait for zsh ESC-chaining.
+# Reduce timeout for ESC/Meta chaining.
 KEYTIMEOUT=1
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS='*?_-.[]~=&;!#$%^/(){}<>'
+
+# Disable C-q C-s flow control:
+setopt noflowcontrol
+
+autoload -U select-word-style
 
 insert-last-word-forward() zle insert-last-word 1
 zle -N insert-last-word-forward
 
+backward-kill-bashword () {
+	select-word-style bash
+	zle backward-kill-word
+	select-word-style normal
+}
+zle -N backward-kill-bashword
+
+kill-bashword () {
+	select-word-style bash
+	zle kill-word
+	select-word-style normal
+}
+zle -N kill-bashword
+
+backward-bashword () {
+	select-word-style bash
+	zle backward-word
+	select-word-style normal
+}
+zle -N backward-bashword
+
+forward-bashword () {
+	select-word-style bash
+	zle forward-word
+	select-word-style normal
+}
+zle -N forward-bashword
+
+function prepend-sudo {
+  if [[ $BUFFER != "sudo "* ]]; then
+      BUFFER="sudo $BUFFER"
+      CURSOR+=5
+  fi
+}
+zle -N prepend-sudo
+bindkey "^[q" prepend-sudo
+
 bindkey -M emacs '^H' backward-delete-word
 if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
-    bindkey -M emacs '^[Oc' forward-word
     bindkey -M emacs '^[Od' backward-word
+    bindkey -M emacs '^[Oc' forward-word
+    bindkey -M emacs '^[^[[D' backward-bashword
+    bindkey -M emacs '^[^[[C' forward-bashword
     bindkey -M emacs '^[[3^' kill-word
-else if [[ "$TERM" =~ "xterm" ]]
-    bindkey -M emacs '^[[1;5D' backward-word
-    bindkey -M emacs '^[[1;5C' forward-word
-    bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[^[[3~' kill-bashword
+    bindkey -M emacs '^[[33~' backward-kill-bashword
+elif [[ "$TERM" =~ "tmux" ]] ; then
+    # bindkey -M emacs '^[[1;5D' backward-word
+    # bindkey -M emacs '^[[1;5C' forward-word
+    bindkey -M emacs '^[^[[D' backward-bashword
+    bindkey -M emacs '^[^[[C' forward-bashword
+    # bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[^[[3~' kill-bashword
+    bindkey -M emacs '^[[18;2~' backward-kill-bashword
+elif [[ "$TERM" =~ "xterm" ]] ; then
+    # bindkey -M emacs '^[[1;5D' backward-word
+    # bindkey -M emacs '^[[1;5C' forward-word
+    bindkey -M emacs '^[[1;3D' backward-bashword
+    bindkey -M emacs '^[[1;3C' forward-bashword
+    # bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[[3;3~' kill-bashword
     bindkey -M emacs '^[[H' beginning-of-line
     bindkey -M emacs '^[[F' end-of-line
+    bindkey -M emacs '^[^H' backward-kill-bashword
 fi
 # temporary
 bindkey -M emacs '^w' beep
