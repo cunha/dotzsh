@@ -1,7 +1,7 @@
 # Reduce timeout for ESC/Meta chaining.
 KEYTIMEOUT=1
 
-WORDCHARS='*?_-.[]~=&;!#$%^/(){}<>'
+WORDCHARS='*?_-.,[]~=&;!#$%^/(){}<>'
 
 # Disable C-q C-s flow control:
 setopt noflowcontrol
@@ -58,8 +58,8 @@ if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
     bindkey -M emacs '^[^[[3~' kill-bashword
     bindkey -M emacs '^[[33~' backward-kill-bashword
 elif [[ "$TERM" =~ "tmux" ]] ; then
-    # bindkey -M emacs '^[[1;5D' backward-word
-    # bindkey -M emacs '^[[1;5C' forward-word
+    bindkey -M emacs '^[[1;5D' backward-word
+    bindkey -M emacs '^[[1;5C' forward-word
     bindkey -M emacs '^[^[[D' backward-bashword
     bindkey -M emacs '^[^[[C' forward-bashword
     # bindkey -M emacs '^[[3;5~' kill-word
