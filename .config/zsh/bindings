@@ -62,7 +62,7 @@ elif [[ "$TERM" =~ "tmux" ]] ; then
     bindkey -M emacs '^[[1;5C' forward-word
     bindkey -M emacs '^[^[[D' backward-bashword
     bindkey -M emacs '^[^[[C' forward-bashword
-    # bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[[3;5~' kill-word
     bindkey -M emacs '^[^[[3~' kill-bashword
     bindkey -M emacs '^[[18;2~' backward-kill-bashword
 elif [[ "$TERM" =~ "xterm" ]] ; then
