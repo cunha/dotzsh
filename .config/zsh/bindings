@@ -46,7 +46,7 @@ function prepend-sudo {
   fi
 }
 zle -N prepend-sudo
-bindkey "^[q" prepend-sudo
+bindkey -M emacs "^[q" prepend-sudo
 
 bindkey -M emacs '^H' backward-delete-word
 if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
