@@ -14,21 +14,21 @@ function set-prompt {
 		PS1KML="[" ;
 		PS1KMR="]" ;
 	fi ;
-	PROMPT="%F{foreground}$PS1KML"
-	PROMPT+="%1(j.%F{yellow}%j%F{foreground} .)"
+	PROMPT="%{$terminfo[sgr0]%}$PS1KML"
+	PROMPT+="%1(j.%F{yellow}%j%f .)"
 
 	if [[ $TMUX != "" ]] ; then
 		WINDOW=$(tmux display-message -p "#I")
 	fi ;
 	if [[ $WINDOW != "" ]] ; then
-		PROMPT+="%F{foreground}$WINDOW%F{foreground}:"
+		PROMPT+="$WINDOW:"
 	fi ;
-	PROMPT+="%F{red}%m%F{foreground}:%F{blue}%~%F{foreground}"
+	PROMPT+="%F{red}%m%f:%F{blue}%~%f"
 	if [[ ! -z $vcs_info_msg_0_ ]] ; then
 		PROMPT+=" ${vcs_info_msg_0_}"
 	fi
 	PROMPT+="$PS1KMR"
-	PROMPT+="$PROMPT_TERM_COLOR%# %F{foreground}"
+	PROMPT+="$PROMPT_TERM_COLOR%# %f"
 
 }
 
