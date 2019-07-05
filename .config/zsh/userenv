@@ -6,8 +6,14 @@ if ! infocmp $TERM &> /dev/null ; then
 	tic $HOME/.config/tmux/terminfo/$TERM.terminfo
 fi
 
-if [[ $(which vim) == "vim not found" ]] ; then export EDITOR=vi ;
-else export EDITOR=vim ; fi
+export EDITOR=code
+if [[ $(which code) == "code not found" ]] ; then
+	export EDITOR=vim
+	if [[ $(which vim) == "vim not found" ]] ; then
+		export EDITOR=vi
+	fi
+fi
+
 export VISUAL=$EDITOR ;
 
 if [[ $(which xclip) == "xclip not found" ]] ; then echo "xclip not found" ; fi
