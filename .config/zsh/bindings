@@ -49,7 +49,8 @@ zle -N prepend-sudo
 bindkey -M emacs "^[q" prepend-sudo
 
 bindkey -M emacs '^H' backward-delete-word
-if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
+case $TERM in
+rxvt-unicode*)
     bindkey -M emacs '^[Od' backward-word
     bindkey -M emacs '^[Oc' forward-word
     bindkey -M emacs '^[^[[D' backward-bashword
@@ -57,25 +58,27 @@ if [[ "$TERM" =~ "rxvt-unicode" ]] ; then
     bindkey -M emacs '^[[3^' kill-word
     bindkey -M emacs '^[^[[3~' kill-bashword
     bindkey -M emacs '^[[33~' backward-kill-bashword
-elif [[ "$TERM" =~ "tmux" ]] ; then
+    ;;
+tmux*|xterm*)
     bindkey -M emacs '^[[1;5D' backward-word
     bindkey -M emacs '^[[1;5C' forward-word
-    bindkey -M emacs '^[^[[D' backward-bashword
-    bindkey -M emacs '^[^[[C' forward-bashword
-    bindkey -M emacs '^[[3;5~' kill-word
-    bindkey -M emacs '^[^[[3~' kill-bashword
-    bindkey -M emacs '^[[18;2~' backward-kill-bashword
-elif [[ "$TERM" =~ "xterm" ]] ; then
-    # bindkey -M emacs '^[[1;5D' backward-word
-    # bindkey -M emacs '^[[1;5C' forward-word
     bindkey -M emacs '^[[1;3D' backward-bashword
     bindkey -M emacs '^[[1;3C' forward-bashword
-    # bindkey -M emacs '^[[3;5~' kill-word
+    bindkey -M emacs '^[[3;5~' kill-word
     bindkey -M emacs '^[[3;3~' kill-bashword
     bindkey -M emacs '^[[H' beginning-of-line
     bindkey -M emacs '^[[F' end-of-line
-    bindkey -M emacs '^[^H' backward-kill-bashword
-fi
+    bindkey -M emacs '^[^?' backward-kill-bashword
+    ;;
+    # tmux on urxvt:
+    # bindkey -M emacs '^[[1;5D' backward-word
+    # bindkey -M emacs '^[[1;5C' forward-word
+    # bindkey -M emacs '^[^[[D' backward-bashword
+    # bindkey -M emacs '^[^[[C' forward-bashword
+    # bindkey -M emacs '^[[3;5~' kill-word
+    # bindkey -M emacs '^[^[[3~' kill-bashword
+    # bindkey -M emacs '^[[18;2~' backward-kill-bashword
+esac
 # temporary
 bindkey -M emacs '^w' beep
 
