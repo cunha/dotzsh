@@ -120,5 +120,5 @@ bindkey -M isearch '\e' accept-search
 # bindkey -M viins '^N' run-help
 # bindkey -M vicmd '^N' run-help
 
-# bindkey -v ;
-bindkey -e ;
+bindkey -v ;
+# bindkey -e ;
