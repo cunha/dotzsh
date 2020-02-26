@@ -35,6 +35,9 @@ peering-ssh-bird () {
         local sessions=$(wc -l < bird-summary.txt)
         local established=$(grep Established bird-summary.txt | wc -l)
         echo "$established of $sessions IPv4 sessions established"
+    elif [[ $1 == "--export" ]] ; then
+        echo "[$2] routes exported to $3"
+        ssh $2 'sudo docker exec peeringmux_bird_1 birdc -s /var/run/peering/bird/bird.ctl "show route export '$3'"'
     else
         ssh $1 -tt 'sudo docker exec -ti peeringmux_bird_1 bash'
     fi
@@ -52,6 +55,9 @@ peering-ssh-bird6 () {
         local sessions=$(wc -l < bird-summary.txt)
         local established=$(grep Established bird-summary.txt | wc -l)
         echo "$established of $sessions IPv6 sessions established"
+    elif [[ $1 == "--export" ]] ; then
+        echo "[$2] routes exported to $3"
+        ssh $2 'sudo docker exec peeringmux_bird6_1 birdc -s /var/run/peering/bird6/bird6.ctl "show route export '$3'"'
     else
         ssh $1 -tt 'sudo docker exec -ti peeringmux_bird6_1 bash'
     fi
