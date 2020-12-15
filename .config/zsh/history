@@ -11,6 +11,7 @@ function zshaddhistory {
 	if [[ $currdir =~ '^/home/cunha/Dropbox' ]] ; then return ; fi
 	if [[ $currdir =~ '^/home/cunha/ownCloud' ]] ; then return ; fi
 	if [[ $currdir =~ '^/home/cunha/GDrive' ]] ; then return ; fi
+	if [[ $currdir =~ '^/home/cunha/Desktop' ]] ; then return ; fi
 	touch .zshlocal
 	echo -n $1 >> .zshlocal
 	sz=$(stat --format "%s" .zshlocal)
